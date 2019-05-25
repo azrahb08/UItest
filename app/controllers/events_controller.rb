@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.build_guestlist
-
+    @event.todos.build
   end
 
   # GET /events/1/edit
@@ -74,7 +74,8 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:name,:date_of_event,:location,:address, :latitude, :longitude, :description,:rsvp_cut_off, :cover_photo,
-      :guestlist_attributes => [:name, :email]
+      :guestlist_attributes => [:name, :email, :response],
+      :todos_attributes => [:title, :description]
     )
     end
 end

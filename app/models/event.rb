@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   has_one :user
   has_one :guestlist
   accepts_nested_attributes_for :guestlist
+  has_many :todos
+  accepts_nested_attributes_for :todos
   #has_one :location
   has_one_attached :cover_photo
   has_and_belongs_to_many :guests

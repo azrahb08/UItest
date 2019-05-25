@@ -42,3 +42,7 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
 <% end %>
+<br>
+
+<h3>Responses by Guestlist</h3>
+<%= pie_chart Guestlist.group(:response).count %>
