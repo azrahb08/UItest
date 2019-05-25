@@ -1,0 +1,55 @@
+<% provide :head_tags do %>
+<meta name='turbolinks-visit-control' content='reload'>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    initMap(<%=@event.latitude%>, <%@event.longitude%>)
+  });
+</script>
+<% end %>
+
+<div class="events show">
+  <h2><%=@event.name%></h2>
+
+  <table summary="Event view">
+    <tr>
+
+      <td><% if @event.cover_photo.attached? %>
+        <image src="<%=(url_for(@event.cover_photo)) %>">
+          <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Date of Event</th>
+      <td><%= @event.date_of_event.strftime("%-d/%-m/%y %H:%M %Z") %></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td><%= @event.description %></td>
+    </tr>
+    <tr>
+      <th>Location</th>
+      <td><%= @event.location %></td>
+    </tr>
+
+
+    <tr>
+      <th>Response Cut-Off</th>
+      <td><%= @event.rsvp_cut_off.strftime("%-d/%-m/%y %H:%M %Z") %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @event.created_at.strftime("%-d/%-m/%y %H:%M %Z") %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @event.updated_at.strftime("%-d/%-m/%y %H:%M %Z") %></td>
+    </tr>
+  </table>
+
+</div>
+
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

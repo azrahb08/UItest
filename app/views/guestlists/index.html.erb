@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Guestlists</h1>
+
+<p>
+  Download:
+  <%= link_to "CSV", guestlists_path(format: "csv") %> |
+  <%= link_to "Excel", guestlists_path(format: "xls") %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Response</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guestlists.each do |guestlist| %>
+      <tr>
+        <td><%= guestlist.name %></td>
+        <td><%= guestlist.email %></td>
+        <td><%= guestlist.response %></td>
+        <td><%= link_to 'Show', guestlist %></td>
+        <td><%= link_to 'Edit', edit_guestlist_path(guestlist) %></td>
+        <td><%= link_to 'Destroy', guestlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guestlist', new_guestlist_path %>
+<br>
+
+<h2>Import Guestlist</h2>
+<%= form_tag import_guestlists_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

@@ -1,0 +1,33 @@
+<% provide :head_tags do %>
+<meta name='turbolinks-visit-control' content='reload'>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    initMap(<%=@location.latitude%>, <%@location.longitude%>)
+  });
+</script>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<div id="map"></div>
+
+
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

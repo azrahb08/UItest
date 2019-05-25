@@ -1,0 +1,64 @@
+<% provide :head_tags do %>
+<meta name='turbolinks-visit-control' content="reload">
+<script>
+  document.addEventListener("DOMContentLoaded", initMap2)
+</script>
+<% end %>
+
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_event %>
+    <%= form.datetime_select(:date_of_event) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location  %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rsvp_cut_off %>
+    <%= form.datetime_select(:rsvp_cut_off, :include_seconds => false ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Cover Photo" %>
+    <%= form.file_field :cover_photo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+
+<% end %>

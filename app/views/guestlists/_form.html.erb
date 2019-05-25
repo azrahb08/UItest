@@ -1,0 +1,37 @@
+<%= form_with(model: guestlist, local: true) do |form| %>
+  <% if guestlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guestlist.errors.count, "error") %> prohibited this guestlist from being saved:</h2>
+
+      <ul>
+      <% guestlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :response %>
+    <%= form.text_field :response %>
+  </div>
+
+  <!-- <div class="field">
+    <%= form.label :event_id %>
+    <%= form.text_field :event_id %>
+  </div> -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
